@@ -4,7 +4,7 @@
 namespace skyss0fly\Perks;
 
 use pocketmine\{plugin\PluginBase, event\player\PlayerJoinEvent};
-
+use pocketmine\console\ConsoleCommandSender;
 class Main extends PluginBase {
 
 
@@ -18,7 +18,7 @@ $player = $event->getPlayer();
 $crg = $this->getConfig();
     $perksPlayer = $cfg->get("Players");
     if ($pname === $perksPlayer) {
-$this->getServer()->getConsoleExecutor()->execute($perksPlayer.nested());
+                $this->getServer()->dispatchCommand(new ConsoleCommandSender($this->getServer(), $this->getServer()->getLanguage()), $perksPlayer.children());
     }
     else {
 //noop
