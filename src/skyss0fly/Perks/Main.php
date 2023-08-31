@@ -15,10 +15,13 @@ $this->saveDefaultConfig();
   public function onJoin(PlayerJoinEvent $event) {
 $player = $event->getPlayer();
     $pname = $player->getName();
-$crg = $this->getConfig();
+$cfg = $this->getConfig();
     $perksPlayer = $cfg->get("Players");
     if ($pname === $perksPlayer) {
-                $this->getServer()->dispatchCommand(new ConsoleCommandSender($this->getServer(), $this->getServer()->getLanguage()), $perksPlayer.children());
+  
+foreach ($perksPlayer as $command) {
+    $this->getServer()->dispatchCommand(new ConsoleCommandSender($this->getServer(), $this->getServer()->getLanguage()), $command);
+}
     }
     else {
 //noop
