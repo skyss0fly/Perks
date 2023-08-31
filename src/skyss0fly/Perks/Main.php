@@ -17,7 +17,7 @@ $player = $event->getPlayer();
     $pname = $player->getName();
 $cfg = $this->getConfig();
     $perksPlayer = $cfg->get("Players");
-    if ($pname === $perksPlayer) {
+    if (in_array($pname, $perksPlayer)) {
   
 foreach ($perksPlayer as $command) {
     $this->getServer()->dispatchCommand(new ConsoleCommandSender($this->getServer(), $this->getServer()->getLanguage()), $command);
